@@ -22,14 +22,14 @@ const Login = () => {
   }, []);
 
   const onFinish = (values) => {
-    if(values.tai_khoan !== 'admin' && values.mat_khau !== 'admin') {
+    if(values.tai_khoan !== 'admin' || values.mat_khau !== 'admin') {
       notification.warning({
         message: 'Thông báo',
         description: 'Tài khoản hoặc mật khẩu không đúng'
       });
       return;
     }
-
+    
     notification.warning({
       message: 'Thông báo',
       description: 'Đăng nhập thành công'
@@ -44,7 +44,7 @@ const Login = () => {
   const redirect = (data) => {
     sessionStorage.setItem("user", JSON.stringify(data));
 
-    navigate('/');
+    navigate('/nhan-su');
   };
 
   const onFinishFailed = () => {
